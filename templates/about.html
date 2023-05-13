@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HollyFlix</title>
+    <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon">
+</head>
+<body>
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie Recommended Sysytem</title>
+       
+
+        <style>
+            *{
+
+box-sizing: border-box;
+margin:0;
+padding:0;
+}
+
+
+
+
+
+
+
+/* hvhjvhhjvvh */
+
+
+/* 
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}*/
+
+body{
+overflow-x: hidden;
+
+}
+
+.wraper{
+
+    width:100vw;
+    /* height:100vh; */
+display: flex;
+flex-direction: column;
+color: #fff;
+background-image: linear-gradient(45deg, rgb(69, 24, 24), black, rgb(29, 14, 14),black);
+}
+
+.nav{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-right: 2rem;
+
+}
+
+.mrs{
+font-weight:1000;
+font-size: 1.4rem;
+color: rgba(163, 41, 41, 0.641);
+text-shadow: .001rem .001rem .001rem #fbf6f6;
+}
+
+
+
+
+
+.name img{
+width: 2.3rem;
+filter: drop-shadow(.2rem .2rem .2rem #4444dd);
+animation-name: shake;
+animation-duration: 3s;
+animation-timing-function: linear;
+animation-delay: 2s;
+animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+
+0% {
+transform:rotate(0deg);
+transform-origin:50% 0;
+}
+10% {
+transform:rotate(2deg);
+}
+20% {
+transform:rotate(-4deg);
+}
+30% {
+transform:rotate(4deg);
+}
+40% {
+transform:rotate(-4deg);
+}
+40% {
+transform:rotate(4deg);
+}
+60% {
+transform:rotate(-4deg);
+}
+70% {
+transform:rotate(4deg);
+}
+80% {
+transform:rotate(-2deg);
+}
+90% {
+transform:rotate(2deg);
+}
+100% {
+transform:rotate(0deg);
+transform-origin:50% 0;
+}
+
+}
+
+.name{
+display: flex;
+justify-content: end;
+align-items: end;
+margin-top: 1.5rem;
+margin-left: 4rem;
+}
+
+.name  h2{
+font-size: 2.8rem;
+}
+
+.name  {
+display: flex;
+
+}
+
+.name-f{
+color: red;
+font-size: 3.5rem;
+}
+
+
+
+.home{
+    position: absolute;
+    display: flex;
+    gap: 2rem;
+    align-self: end;
+    margin-right: 4rem;
+    margin-top: .6rem;    
+}
+
+ .home-btn,.about{
+    text-decoration: none;
+    color:#fff;
+    background-color: red;
+    border-radius: .5rem;
+    padding: .2rem .4rem;
+    transform: all 1s linear;
+
+}
+
+
+.home-btn:hover,.about:hover
+{
+
+    transform: scaleY(0.95) translateX(0.2rem);
+
+    ;
+}
+
+.heading
+{
+
+    text-align: center;
+}
+
+
+.about_page
+
+{
+    margin: 2rem;
+    padding: 1.3rem;
+
+
+}
+
+.about_page h1
+
+{
+
+    text-align: center;
+
+    
+}
+
+.describe
+
+{
+
+    margin-top: 2rem;
+}
+
+
+
+.describe p
+
+{
+
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    color: rgb(177, 108, 242);
+
+}
+
+h2
+
+{
+    margin-bottom: 1.3rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(232, 48, 48, 0.815);
+    
+}
+
+
+
+
+
+.dev_nam
+{
+
+    width: 20vw;
+    height: 20vw;
+    border-radius: 1.3rem;
+    border: 0.3rem solid rgba(232, 48, 48, 0.815);
+
+    box-shadow: .2rem .2rem .3rem ,-.2rem -.2rem .3rem;
+
+    object-fit: cover;
+}
+
+.developer
+
+{
+
+    margin:2rem 10rem;
+
+}
+
+
+.card
+{
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.card1 p
+{
+
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top:.3rem;
+
+    color: rgba(100, 112, 244, 0.882);
+
+}
+
+.card1 h3
+
+{
+
+
+    text-align: center;
+    font-size: 1.8rem;
+    color:rgba(232, 48, 48, 0.815);
+}
+
+
+
+
+
+
+
+div.at-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.card1 img {
+     
+    background-color:#ffe672; 
+    animation-name: flip-horizontal;
+    animation-duration: 10s;
+    animation-timing-function: ease-in;
+    animation-delay: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode:forwards;
+        
+    /* shorthand
+    animation: flip-horizontal 1s linear 0s 1 normal none;*/
+}
+@keyframes flip-horizontal {
+        
+    0% {
+        transform:rotateX(0);
+    }
+    18% {
+        transform:rotateX(-360deg);
+    }
+    100%{
+        transform:rotateX(-360deg);
+    }
+}
+
+
+
+.team_work p{
+    font-size: 1.5rem;
+    color:  rgba(100, 112, 244, 0.882);
+    text-align: center;
+    margin: .7rem 4rem;
+}
+
+
+.footer{
+    background-color: rgb(157, 51, 84);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.footer p{
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+
+        </style>
+       
+    </head>
+    <body>
+        <div class="wraper">
+           <!-- home about -->
+            <div class="home">
+                <a class="home-btn" href="/"><div >Home</div></a>
+                <a class="about" href="#about.html"> <div >About</div></a>
+                
+            </div>  
+    
+            <div class="nav">
+                <div class="name">
+                    <img src="../static/logo.png" alt="" class="name-img">
+                    <h2 >olly<span class="name-f">F</span>lix</h2>
+                </div>
+                <div class="mrs">Movie  Recommended System</div>
+            </div>
+            
+
+           <!-- about of the page -->
+
+
+           <div class="about_page">
+
+            <h1 class="heading">Thanks For Visting to Our Website and for showing kind interest to us.</h1>
+
+            <div class="describe">
+
+            <p>This Movie Recommended Application project is purely based on Machine Learning algorithms</p>
+            <p>In this application different kind of python library such as numpy, pandas, Sickit learn etc are used to make a machine learning model</p>
+            <p>For making this model, first we collect the training dataset from Kagle website and different types of datapreprocessings are done for making it higher accuracy</p>
+            <p>Here this application recommends similar kind of four movies based on user's choice</p>
+            <p>For this recommendation from the dataset of the model,  vectorization and similarity methods are used</p>
+
+            <p>After making the recommendation ML model, We use Web-Dev technology to give this project an Userinterfac(UI)</p>
+            
+            <p>In Frontend part we use HTML, CSS and JavaScripts Technology. On the otherhand Flask python library is used for Backend part</p>
+            <p>Through the Flask library we maintained the serverside and renders the recommendation to the Frontend Interface</p>
+
+            </div>
+ 
+
+
+           </div>
+
+
+           <div class="developer">
+
+            <h2>Developers</h2>
+
+            <div class="card">
+
+            <div class="card1">
+
+                <img src="../static/jintu_photo.jpg"class="dev_nam" alt="">
+
+                <h3>Jintu Nath</h3>
+                <p>B.Tech,CSE(2021-25)</p>
+                <p>Jorhat Engineering College,Assam</p>
+            </div>
+
+
+            <div class="card1">
+
+                <img src="../static/parag_photo.jpg"class="dev_nam" alt="">
+  
+                    <h3>Parag Choudhury</h3>
+                  <p>B.Tech,CSE(2021-25)</p>
+                  <p>Jorhat Engineering College,Assam</p>
+              </div>
+
+            </div>
+  
+
+
+            <div class="card1"></div>
+           </div>
+
+
+           <div class="team_work">
+
+            <p>This project had developed during our B.Tech 4th Sem while we were exploring  Machine Learning for Our Accdamic Internship as accdamic curriculum.</p>
+
+            <p>We had done this project as teamwork.</p>
+
+            <p>Special thanks to our web-dev instructor LOVE BABBAR</p>
+
+
+           </div>
+
+           <div class="footer">
+            <p>@2023 Parag Choudhury & Jintu Nath|All rights reserved</p>
+            <div class="name">
+                <img src="../static/logo.png" alt="" class="name-img">
+                <h2 >olly<span class="name-f">F</span>lix</h2>
+            </div>
+        
+        </div>
+
+
+
+    
+           
+    
+    
+          
+   
+
+        </div>
+    
+       <script>
+        
+    
+    const current_value=19995
+    
+    
+    const show=document.querySelector(".Button1")
+    const less=document.querySelector(".Button2")
+    
+    console.log(current_value)
+    
+     async function fetch_api(current_id)
+     {
+        try{
+            const url=`https://api.themoviedb.org/3/movie/${current_id}?api_key=a22b086e35b3a3a88795475c128b7bb9&language=en-US'`
+            const response=await fetch(url)
+            const json=await response.json()
+    
+            render(json)
+            
+        }
+    
+        catch{
+    
+            console.log("error aa gaya dost")
+        }
+    
+     }
+    
+    
+    const api_result= fetch_api(current_value);
+    
+    
+    
+    
+    function render(api_result)
+    {
+    
+    const movie_name=document.querySelector('.movie_name')
+    movie_name.textContent=api_result.title
+     
+    
+    const tagline=document.querySelector('.tagline')
+    tagline.textContent=api_result.tagline
+    
+    
+    
+    overview=api_result.overview
+    console.log(overview)
+    
+    
+    
+    
+    const lang=`${api_result.spoken_languages[0].english_name}, ` + api_result.spoken_languages[1].english_name
+    const span_cast=document.querySelector('.span-language')
+    span_cast.textContent=lang
+    
+    
+    
+    
+    const span_date=document.querySelector('.span-date')
+    span_date.textContent=api_result.release_date
+    
+    const time=api_result.runtime
+    const remain=time%60
+    const div= (time-remain)/60
+    const timefinal=`${div}hr `+`${remain}min`
+    const span_runtime=document.querySelector('.span-runtime')
+    span_runtime.textContent=timefinal
+    
+    
+    const span_revenue=document.querySelector('.span-revenue')
+    span_revenue.textContent=api_result.budget
+    
+    
+    
+    const span_rating=document.querySelector('.span-rating')
+    span_rating.textContent=api_result.vote_average + `  (${api_result.vote_count})`
+    
+    
+    more_fast();
+    
+    
+    }
+    
+    
+    
+    
+    function more_fast(){
+    
+    
+    const span_overview=document.querySelector('.span-overview')
+    span_overview.textContent=overview.slice(0,70)
+    less.classList.add("deactive")
+    show.classList.remove("deactive")
+    
+    
+    }
+    
+    function more(){
+        const span_overview=document.querySelector('.span-overview')
+    span_overview.textContent=overview
+    
+    less.classList.remove("deactive")
+    show.classList.add("deactive")
+    }
+    
+    
+       </script>
+        
+    </body>
+    </html>
+
+
+
+
+
+    
+</body>
+</html>

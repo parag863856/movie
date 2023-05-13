@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HollyFlix</title>
+    <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon">
+  
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+   
+}
+
+        #vid{
+            width: 100%;
+            height: 100%;
+
+        }
+
+
+        .iframe
+        {
+
+            
+            width: 100%;
+            height: 100%;
+        }
+
+ .btn-main{
+    position: absolute;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 1rem;
+            right: 1.3rem;
+            top:.5rem;
+            opacity: 1;
+            z-index: 999;
+ }
+
+        .button{ 
+            width: 3rem;
+            height: 3rem;
+            border-radius: 1rem;
+            opacity: 1;
+        }
+
+
+        .error
+        {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+            height: 100%;
+            gap:.5rem;
+
+            background-image: linear-gradient(45deg, rgb(69, 24, 24), black, rgb(29, 14, 14),black);
+            color: white;
+
+        }
+
+        #current
+        {
+
+            display: none;
+        }
+
+        
+     
+        .loading{
+           object-fit: cover;
+           width: 20rem;
+            height: 20rem;
+            border-radius: 100rem;
+            box-shadow: .2rem .2rem .6rem #fff,-.2rem -.2rem .6rem #bd1515;
+        }
+
+        .loader{
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap:2rem;
+            align-items: center;
+            background-image: linear-gradient(45deg, rgb(69, 24, 24), black, rgb(29, 14, 14),black);
+           
+        }
+
+        .content
+        {
+
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .deactive
+        {
+
+            display:none;
+            z-index: -200;
+        }
+
+       
+    </style>
+
+</head>
+<body>
+
+<div class="loader">
+   
+    <video autoplay muted loop class="loading">
+        <source src="../static/loader.mkv" type="video/mp4">
+      </video>
+   
+
+    <img src="../static/loading_text.gif" alt="" class="loading-text">
+
+</div>
+
+<div class="content">
+
+    <input class="current_movie_id" type="number" value="{{current_movie_id}}" id="current" >
+
+   <a class="btn-main" href="/">
+    <img  class="button" src="../static/cross.jpg" alt="">
+   </a>
+    
+    
+    
+    <div class="iframe">
+
+            <iframe  id="vid"   allow="autoplay" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    
+    
+
+
+    <!-- Error Handleing -->
+
+
+    <div class="error">
+
+        <h1>👀p's Something Went Wrong </h1>
+        <h2>Probably Movie Is Not Found IN API Database</h1>
+        <h2>Sorry For The Inconvenience</h2>
+
+    </div>
+
+</div>
+
+
+
+
+    <script >
+
+
+
+       const loader=document.querySelector('.loader')
+       const error=document.querySelector('.error')
+
+
+
+
+async function fetch_trailer(){
+    const current_id=document.getElementById("current").value
+
+    console.log(current_id)
+    
+
+    try{
+         
+        const url=`https://cors-anywhere.herokuapp.com/https://api.kinocheck.de/movies?tmdb_id=${current_id}`
+        const response=await fetch(url)
+        console.log("jhdgftyw")
+        const json=await response.json()
+        console.log("moi parag")
+        console.log(json)
+       
+
+
+
+
+      
+   console.log("before chal geya ")
+    const path=json.videos[1].youtube_video_id
+    
+    console.log(path)
+
+    
+   
+         console.log(path)
+
+    const fullPath=`https://www.youtube.com/embed/${path}`
+
+    console.log(fullPath)
+
+
+    document.getElementById("vid").src=fullPath
+
+
+   
+
+    console.log("last line")
+
+   setTimeout(() => {
+
+    loader.classList.add('deactive')
+    error.classList.add('deactive')
+    
+   }, 3000);
+
+
+    }
+
+
+    
+
+
+    catch
+    {
+        console.log("catcgh chall geya" )
+       const iframe=document.querySelector(".iframe")
+       iframe.style.display="none"; 
+
+       loader.classList.add('deactive')
+
+
+    }
+
+    
+
+}
+
+fetch_trailer()
+
+
+
+
+
+    </script>
+</body>
+</html>

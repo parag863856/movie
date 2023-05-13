@@ -1,0 +1,155 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+
+.wraper{
+    color: #fff;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(45deg, rgb(69, 24, 24), black, rgb(29, 14, 14),black);
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 2rem;
+
+}
+
+.mrs{
+    font-weight:1000;
+    font-size: 1.4rem;
+    color: rgba(163, 41, 41, 0.641);
+    text-shadow: .001rem .001rem .001rem #fbf6f6;
+}
+
+.name img{
+    width: 2.3rem;
+    filter: drop-shadow(.2rem .2rem .2rem #4444dd);
+    animation-name: shake;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+
+    0% {
+        transform:rotate(0deg);
+        transform-origin:50% 0;
+    }
+    10% {
+        transform:rotate(2deg);
+    }
+    20% {
+        transform:rotate(-4deg);
+    }
+    30% {
+        transform:rotate(4deg);
+    }
+    40% {
+        transform:rotate(-4deg);
+    }
+    40% {
+        transform:rotate(4deg);
+    }
+    60% {
+        transform:rotate(-4deg);
+    }
+    70% {
+        transform:rotate(4deg);
+    }
+    80% {
+        transform:rotate(-2deg);
+    }
+    90% {
+        transform:rotate(2deg);
+    }
+    100% {
+        transform:rotate(0deg);
+        transform-origin:50% 0;
+    }
+    
+}
+
+.name{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-top: 1.5rem;
+    margin-left: 4rem;
+}
+
+.name  h2{
+    font-size: 2.8rem;
+}
+
+.name  {
+    display: flex;
+
+}
+
+.name-f{
+    color: red;
+    font-size: 3.5rem;
+}
+
+/* searching  */
+
+
+.src-main
+{
+    height:29rem;
+    /* position:relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.film-vec{
+
+    
+    position: absolute;
+    right:0;
+    bottom: 0;
+
+}
+
+
+
+.text{
+   
+    color: rgb(200, 226, 217);
+    appearance: none;
+    width:35rem;
+    padding:.27rem;
+    font-weight: 100;
+    letter-spacing: 0.16rem;
+    outline: none;
+    font-size: 1.7rem;
+    border-radius: 1rem;
+    text-align: center;
+    background-color: rgb(79, 35, 35);
+    border-bottom: .27rem solid rgb(102, 57, 108);
+}
+
+
+.submit{
+
+    appearance: none;
+    margin-left:1rem;
+    width:6rem;
+    font-size: 1.3rem;
+    padding: .5rem;
+    border-radius: 1rem;
+    background-color: rgba(142, 28, 28, 0.511);
+    color: white;
+    border-bottom: .3rem solid rgb(102, 57, 108);
+}
+

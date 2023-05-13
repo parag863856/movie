@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HollyFlix</title>
+    <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon">
+    <style>
+ 
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+/* body{
+    width: 100vw;
+height: 100vh;
+overflow-x: hidden;
+
+} */
+
+.wraper{
+display: flex;
+flex-direction: column;
+color: #fff;
+background-image: linear-gradient(45deg, rgb(69, 24, 24), black, rgb(29, 14, 14),black);
+}
+
+.nav{
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-right: 2rem;
+
+}
+
+.mrs{
+font-weight:1000;
+font-size: 1.4rem;
+color: rgba(163, 41, 41, 0.641);
+text-shadow: .001rem .001rem .001rem #fbf6f6;
+}
+
+.name img{
+width: 2.3rem;
+filter: drop-shadow(.2rem .2rem .2rem #4444dd);
+animation-name: shake;
+animation-duration: 3s;
+animation-timing-function: linear;
+animation-delay: 2s;
+animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+
+0% {
+transform:rotate(0deg);
+transform-origin:50% 0;
+}
+10% {
+transform:rotate(2deg);
+}
+20% {
+transform:rotate(-4deg);
+}
+30% {
+transform:rotate(4deg);
+}
+40% {
+transform:rotate(-4deg);
+}
+40% {
+transform:rotate(4deg);
+}
+60% {
+transform:rotate(-4deg);
+}
+70% {
+transform:rotate(4deg);
+}
+80% {
+transform:rotate(-2deg);
+}
+90% {
+transform:rotate(2deg);
+}
+100% {
+transform:rotate(0deg);
+transform-origin:50% 0;
+}
+
+}
+
+.Button1 , .Button2{
+    color:rgb(215, 99, 99);
+}
+
+.deactive {
+    display: none;
+}
+
+.dot{
+    color:#ffff;
+    font-size: 1.5rem;
+}
+
+.name{
+display: flex;
+justify-content: end;
+align-items: end;
+margin-top: 1.5rem;
+margin-left: 4rem;
+}
+
+.name  h2{
+font-size: 2.8rem;
+}
+
+.name  {
+display: flex;
+
+}
+
+.name-f{
+color: red;
+font-size: 3.5rem;
+}
+
+/* searching  */
+
+
+.src-main
+{
+
+/* position:relative; */
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.film-vec{
+
+
+position: absolute;
+right:0;
+bottom: 0;
+
+
+}
+
+
+
+.text{
+
+color: rgb(200, 226, 217);
+/* appearance: none; */
+width:35rem;
+padding:.27rem;
+font-weight: 100;
+letter-spacing: 0.16rem;
+outline: none;
+font-size: 1.7rem;
+border-radius: 1rem;
+text-align: center;
+background-color: rgb(79, 35, 35);
+border-bottom: .27rem solid rgb(102, 57, 108);
+}
+
+.submit{
+
+appearance: none;
+/* margin-left:1rem; */
+width:6rem;
+font-size: 1.3rem;
+padding: .5rem;
+border-radius: 1rem;
+background-color: rgba(142, 28, 28, 0.511);
+color: white;
+border-bottom: .3rem solid rgb(102, 57, 108);
+
+z-index:10000
+}
+
+.play-btn{
+    text-decoration: none;
+    color:#fff;
+    position: absolute;
+    right:2rem;
+    bottom:4rem;
+    background-color: red;
+    font-size: 1.5rem;
+    padding: .2rem 2rem;
+    border-radius: .7rem;
+    box-shadow: .2rem .2rem .6rem;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+form{
+
+display: flex;
+gap: 2rem;
+}
+
+.active
+{
+
+display: flex;
+}
+
+.current-movie{
+    
+    display: flex;
+    gap: 15rem;
+    justify-content: center;
+    align-items: center;
+    margin: .5rem 10rem;
+}
+
+.photo img
+{
+
+    width: 25rem;
+    height: 30rem;
+    border-radius: 3rem;
+    border: 0.2rem solid  rgb(237, 22, 18);
+    box-shadow: .2rem .2rem 1rem rgb(213, 183, 183);
+
+
+}
+
+
+/* //details styleing  */
+
+.details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.movie_name{
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: .2rem .2rem .5rem red;
+}
+
+.tagline{
+    color: rgba(173, 227, 66, 0.72);
+    font-size: 1.2rem;
+}
+
+.margine{
+    margin-top: .5rem;
+    
+}
+
+.com{
+    font-size: 1.4rem;
+    color:rgba(173, 227, 66, 0.72) ;
+}
+
+.span2{
+    font-size: 1.2rem;
+    color: rgba(222, 243, 182, 0.974);
+}
+
+
+/* recommended */
+
+.recommend
+{
+
+    display: flex;
+    gap:5rem;
+    padding:0 3rem;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1rem;
+    /* flex-wrap: wrap; */
+    overflow: hidden;
+    width: calc(15rem*30);
+
+    animation: scroll 35s linear infinite;
+    
+}
+
+@keyframes scroll {
+
+0%{
+
+    transform: translateX(0);
+}
+
+100%
+{
+    transform: translateX(calc(-15rem* 15));
+}
+ 
+}
+
+
+.recommend_div
+{
+
+    max-width:100vw;
+    overflow: hidden;
+    
+}
+
+.card img
+{
+
+    width: 15rem;
+    height: 19rem;
+    border-radius: 1rem;
+}
+
+.card_name{
+    margin-top: .5rem;
+    font-size: 1rem;
+    text-align: center;
+    text-shadow: .3rem .3rem .4rem rgba(130, 182, 18, 0.985), -.3rem -.3rem .4rem rgba(130, 182, 18, 0.985);
+}
+
+/* home about button */
+.home{
+    position: absolute;
+    display: flex;
+    gap: 2rem;
+    align-self: end;
+    margin-right: 4rem;
+    margin-top: .6rem;    
+}
+
+ .home-btn,.about{
+    text-decoration: none;
+    color:#fff;
+    background-color: red;
+    border-radius: .5rem;
+    padding: .2rem .4rem;
+    transform: all 1s linear;
+
+}
+
+.current_span{
+    display: none;
+}
+
+.home-btn:hover,.about:hover
+{
+
+    transform: scaleY(0.95) translateX(0.2rem);
+}
+
+
+
+
+.recommended-movie-list
+{
+
+    font-size: 2rem;
+    margin-left: 4.3rem;
+    transform: translateY(2.5rem);
+}
+
+
+
+
+
+
+
+@media(width<=1100px){
+  *{
+        font-size: 13px;
+    }
+    .photo img{
+        width: 21rem;
+        height: 30rem;
+      }
+}
+
+@media(width<=950px){
+    *{
+          font-size: 11px;
+      }
+      .photo img{
+        width: 19rem;
+        height: 27rem;
+      }
+
+  }
+
+
+
+
+
+
+    </style>
+   
+</head>
+<body>
+    
+    <div class="wraper">
+       <!-- home about -->
+        <div class="home">
+            <a class="home-btn" href="/"><div >Home</div></a>
+            <a class="about" href="/about"> <div >About</div></a>
+            
+        </div>  
+
+        <div class="nav">
+            <div class="name">
+                <img src="../static/logo.png" alt="" class="name-img">
+                <h2 >olly<span class="name-f">F</span>lix</h2>
+            </div>
+            <div class="mrs">Movie  Recommended System</div>
+        </div>
+        <!-- new dynamic details using api imdb-->
+
+
+        <div class="current-movie">
+
+            <div class="photo">
+                <img src="{{current_movie_poster}}" alt="Current Movie photo" >
+            </div>
+            <div class="details">
+
+                <h2 class="movie_name"></h2>
+                <p class="tagline">Incidunt reprehenderit suscipit, obcaecati</p>
+                <p class="overview margine"  ><span class="com" >overview:</span><span  class="span2 span-overview">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt reprehenderit suscipit, obcaecati dolorem facilis nobis?</span> </span> <span class="Button1" onclick={more()}> <span class="dot">...</span>Show More</span> <span class="Button2" onclick={more_fast()}>Less</span> </p>
+                <!-- <p class="geners margine"><span class="com" >Cast:</span class="span2 span-cast">Jintu,Paragjayashreem,bijit,pratima</p> -->
+                <p class="language margine"><span class="com">  Language:</span><span class="span2 span-language">English</span> </p>
+                <p class="date margine"><span class="com" >Released Date:</span><span class="span2 span-date"> 12/10/2021</span></p>
+                <p class="runtime margine"><span class="com" >Duration:</span><span class="span2 span-runtime">1hr 20min</span> </p>
+                <p class="revenue margine"><span class="com" >Budget:</span><span class="span2 span-revenue">6874637</span> </p>
+                <p class="status margine"><span class="com" >Status:</span><span class="span2 span-status">Released</span> </p>
+                <p class="rating margine"><span class="com" >Rating:</span><span class="span2 span-rating">7.5(7809)</span> </p>
+            </div>
+              <a class="play-btn" href="/videos">Play</a>
+            
+
+        </div>
+
+        
+        <div class="recommended-movie-list">Recommended Movies</div>
+
+
+
+
+        <div class="recommend_div">
+
+
+       
+        <div class="recommend">
+
+            <div class="card photo">
+                <img src="{{poster[0]}}" alt="" >
+                <p class="card_name"> {{movies_name[0]}}</p>
+
+            </div>
+
+            <div class="card photo ">
+                <img src="{{poster[1]}}" alt="" >
+                <p class="card_name">{{movies_name[1]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[2]}}" alt="" >
+                <p class="card_name">{{movies_name[2]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[3]}}" alt="" >
+                <p class="card_name">{{movies_name[3]}}</p>
+
+            </div>
+
+            <div class="card photo">
+                <img src="{{poster[4]}}" alt="" >
+                <p class="card_name">{{movies_name[4]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[0]}}" alt="" >
+                <p class="card_name">{{movies_name[0]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[1]}}" alt="" >
+                <p class="card_name">{{movies_name[1]}}</p>
+
+            </div>
+            
+            <div class="card photo">
+                <img src="{{poster[2]}}" alt="" >
+                <p class="card_name">{{movies_name[2]}}</p>
+
+            </div>
+            
+            <div class="card photo">
+                <img src="{{poster[3]}}" alt="" >
+                <p class="card_name">{{movies_name[3]}}</p>
+
+            </div>
+
+            <div class="card photo">
+                <img src="{{poster[4]}}" alt="" >
+                <p class="card_name">{{movies_name[4]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[0]}}" alt="" >
+                <p class="card_name">{{movies_name[0]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[1]}}" alt="" >
+                <p class="card_name">{{movies_name[1]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[2]}}" alt="" >
+                <p class="card_name">{{movies_name[2]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[3]}}" alt="" >
+                <p class="card_name">{{movies_name[3]}}</p>
+
+            </div>
+
+            <div class="card photo">
+                <img src="{{poster[4]}}" alt="" >
+                <p class="card_name">{{movies_name[4]}}</p>
+
+            </div>
+            
+            <div class="card photo">
+                <img src="{{poster[0]}}" alt="" >
+                <p class="card_name"> {{movies_name[0]}}</p>
+
+            </div>
+
+            <div class="card photo ">
+                <img src="{{poster[1]}}" alt="" >
+                <p class="card_name">{{movies_name[1]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[2]}}" alt="" >
+                <p class="card_name">{{movies_name[2]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[3]}}" alt="" >
+                <p class="card_name">{{movies_name[3]}}</p>
+
+            </div>
+
+            <div class="card photo">
+                <img src="{{poster[4]}}" alt="" >
+                <p class="card_name">{{movies_name[4]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[0]}}" alt="" >
+                <p class="card_name">{{movies_name[0]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[1]}}" alt="" >
+                <p class="card_name">{{movies_name[1]}}</p>
+
+            </div>
+            
+            <div class="card photo">
+                <img src="{{poster[2]}}" alt="" >
+                <p class="card_name">{{movies_name[2]}}</p>
+
+            </div>
+            
+            <div class="card photo">
+                <img src="{{poster[3]}}" alt="" >
+                <p class="card_name">{{movies_name[3]}}</p>
+
+            </div>
+
+            <div class="card photo">
+                <img src="{{poster[4]}}" alt="" >
+                <p class="card_name">{{movies_name[4]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[0]}}" alt="" >
+                <p class="card_name">{{movies_name[0]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[1]}}" alt="" >
+                <p class="card_name">{{movies_name[1]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[2]}}" alt="" >
+                <p class="card_name">{{movies_name[2]}}</p>
+
+            </div>
+            <div class="card photo">
+                <img src="{{poster[3]}}" alt="" >
+                <p class="card_name">{{movies_name[3]}}</p>
+
+            </div>
+
+            <div class="card photo">
+                <img src="{{poster[4]}}" alt="" >
+                <p class="card_name">{{movies_name[4]}}</p>
+
+            </div>
+            
+            
+         
+
+
+        </div>
+
+    </div>
+
+    <!-- value tu loi lou -->
+
+   
+
+        <!-- <form action="/video" class="formm" method="POST">
+          <input class="text" type="text" placeholder="Search The Movie">
+            <input  class="submit" type="submit" value="Submit">  -->
+            <!-- <select name="movie_id" value="" id="movie_id" class="text" > -->
+                <!-- <option value="">Swift</option>
+                <option value="">Maruti</option>
+                <option value="">Alto</option> 
+             
+               
+            </select>
+            <button class="play-btn" type="submit" class="submit"  >Play</button>
+        </form> -->
+
+
+
+
+        <!-- <form action="/video" class="formm" method="POST">
+
+
+
+            <input type="number" value="19995">
+          
+    
+            <button  onclick="Say_Hello()" type="submit" class="submit" value="1995" >Submit</button>
+        </form> -->
+
+
+      
+     <input type="number" class="current_span" value="{{current_movie_id}}">
+
+
+
+       
+    </div>
+
+   <script>
+
+
+
+
+function Say_Hello()
+
+{
+
+    console.log("Submitted btn")
+}
+
+
+
+
+
+    const current_id=document.querySelector('.current_span')
+
+const current_value=current_id.value
+
+const show=document.querySelector(".Button1")
+const less=document.querySelector(".Button2")
+less.classList.add("deactive")
+
+console.log(current_value)
+
+ async function fetch_api(current_id)
+ {
+    try{
+        const url=`https://api.themoviedb.org/3/movie/${current_id}?api_key=a22b086e35b3a3a88795475c128b7bb9&language=en-US'`
+        const response=await fetch(url)
+        const json=await response.json()
+
+        render(json)
+        
+    }
+
+    catch{
+
+        console.log("error aa gaya dost")
+    }
+
+ }
+
+
+const api_result= fetch_api(current_value);
+
+
+
+
+function render(api_result)
+{
+
+const movie_name=document.querySelector('.movie_name')
+movie_name.textContent=api_result.title
+ 
+
+const tagline=document.querySelector('.tagline')
+tagline.textContent=api_result.tagline
+
+
+
+overview=api_result.overview
+console.log(overview)
+const span_overview=document.querySelector('.span-overview')
+span_overview.textContent=overview.slice(0,70)
+
+
+
+
+const lang=`${api_result.spoken_languages[0].english_name}, ` + api_result.spoken_languages[1].english_name
+const span_cast=document.querySelector('.span-language')
+span_cast.textContent=lang
+
+
+
+
+const span_date=document.querySelector('.span-date')
+span_date.textContent=api_result.release_date
+
+const time=api_result.runtime
+const remain=time%60
+const div= (time-remain)/60
+const timefinal=`${div}hr `+`${remain}min`
+const span_runtime=document.querySelector('.span-runtime')
+span_runtime.textContent=timefinal
+
+
+const span_revenue=document.querySelector('.span-revenue')
+span_revenue.textContent=api_result.budget
+
+
+
+const span_rating=document.querySelector('.span-rating')
+span_rating.textContent=api_result.vote_average + `  (${api_result.vote_count})`
+
+
+
+
+
+}
+
+
+
+
+function more_fast(){
+
+const span_overview=document.querySelector('.span-overview')
+span_overview.textContent=overview.slice(0,70)
+less.classList.add("deactive")
+show.classList.remove("deactive")
+
+
+}
+
+function more(){
+    const span_overview=document.querySelector('.span-overview')
+span_overview.textContent=overview
+
+less.classList.remove("deactive")
+show.classList.add("deactive")
+}
+
+
+
+
+
+   </script>
+    
+</body>
+</html>

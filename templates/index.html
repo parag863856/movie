@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HollyFlix</title>
+    <link rel="shortcut icon" href="../static/logo.png" type="image/x-icon">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+
+.wraper{
+    color: #fff;
+    width: 100vw;
+    height: 100vh;
+
+    /* background-image: linear-gradient(45deg, rgb(69, 24, 24), black, rgb(29, 14, 14),black); */
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 2rem;
+
+}
+
+.mrs{
+    font-weight:1000;
+    font-size: 1.4rem;
+    color: crimson;
+    /* text-shadow: .001rem .001rem .001rem #fbf6f6; */
+}
+
+.name img{
+    width: 2.3rem;
+    filter: drop-shadow(.2rem .2rem .2rem #4444dd);
+    animation-name: shake;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+
+    0% {
+        transform:rotate(0deg);
+        transform-origin:50% 0;
+    }
+    10% {
+        transform:rotate(2deg);
+    }
+    20% {
+        transform:rotate(-4deg);
+    }
+    30% {
+        transform:rotate(4deg);
+    }
+    40% {
+        transform:rotate(-4deg);
+    }
+    40% {
+        transform:rotate(4deg);
+    }
+    60% {
+        transform:rotate(-4deg);
+    }
+    70% {
+        transform:rotate(4deg);
+    }
+    80% {
+        transform:rotate(-2deg);
+    }
+    90% {
+        transform:rotate(2deg);
+    }
+    100% {
+        transform:rotate(0deg);
+        transform-origin:50% 0;
+    }
+    
+}
+
+.name{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-top: 1.5rem;
+    margin-left: 4rem;
+}
+
+.name  h2{
+    font-size: 2.8rem;
+}
+
+.name  {
+    display: flex;
+
+}
+
+.name-f{
+    color: red;
+    font-size: 3.5rem;
+}
+
+/* searching  */
+
+
+.src-main
+{
+  
+    /* position:relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22rem;
+
+}
+
+/* 
+.option {
+    opacity: 0.6;
+    width: 10rem;
+    color:red;
+  
+    
+}
+ */
+
+
+
+.film-vec{
+
+    
+    position: absolute;
+    right:0;
+    bottom: 0;
+
+
+}
+
+
+
+.text{
+    opacity: .6;
+    color: rgb(200, 226, 217);
+    /* appearance: none; */
+    width:35rem;
+    padding:.27rem;
+    font-weight: 100;
+    letter-spacing: 0.16rem;
+    outline: none;
+    font-size: 1.7rem;
+    border-radius: 1rem;
+    text-align: center;
+    background-color: rgb(79, 35, 35);
+    
+    /* border-bottom: .27rem solid rgb(102, 57, 108); */
+    border-bottom: .27rem solid crimson;
+}
+
+
+
+
+
+.submit{
+    opacity: .6;
+    appearance: none;
+    /* margin-left:1rem; */
+    width:6rem;
+    font-size: 1.3rem;
+    padding: .5rem;
+    border-radius: 1rem;
+    background-color: rgba(142, 28, 28, 0.511);
+    color: white;
+    border-bottom: .3rem solid crimson;
+
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.submit:hover
+{
+
+    transform:scale(1.1)
+}
+
+form{
+
+    display: flex;
+    gap: 2rem;
+}
+
+.active
+{
+
+    display: flex;
+}
+
+ body{
+    overflow: hidden;
+}
+
+.home-background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.2);
+    z-index: -1;
+    
+    
+}
+
+.filter{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    /* background-image: linear-gradient(45deg, rgb(102, 21, 21), black); */
+    background-image: linear-gradient(45deg, rgb(10, 20, 125), rgb(28, 65, 64));
+
+    opacity: .3;
+}
+
+.loading{  
+           object-fit: cover;
+           width: 20rem;
+            height: 20rem;
+            border-radius: 100rem;
+            box-shadow: .2rem .2rem .6rem #fff,-.2rem -.2rem .6rem #bd1515;
+        }
+
+        
+
+        .loader{
+            transform: scale(0);
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap:2rem;
+            align-items: center;
+            background-image: linear-gradient(45deg, rgb(69, 24, 24), black, rgb(29, 14, 14),black);
+           
+        }
+
+
+        .active
+        {
+              transform: scale(1);
+       
+            z-index: -200;
+        }
+
+
+
+.deactive{
+    display: none;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="loader">
+   
+        <video autoplay muted loop class="loading">
+            <source src="../static/loader.mkv" type="video/mp4">
+          </video>
+       
+    
+        <img src="../static/loading_text.gif" alt="" class="loading-text">
+    
+    </div>
+    
+    <div class="wraper">
+        <div class="filter"></div>
+        <video autoplay muted loop class="home-background">
+            <source src="../static/home_video.mkv" type="video/mp4">
+          </video>
+        
+        <div class="nav">
+            <div class="name">
+                <img src="../static/logo.png" alt="" class="name-img">
+                <h2 >olly<span class="name-f">F</span>lix</h2>
+            </div>
+            <div class="mrs">Movie  Recommended System</div>
+        </div>
+        <div class="src-main">
+                <h1>{{error}}</h1>
+                <form action="/recommendation" class="formm" method="POST">
+                    <!-- <input class="text" type="text" placeholder="Search The Movie">
+                    <input  class="submit" type="submit" value="Submit">  -->
+                    <!-- onfocus="this.size=3;" onblur="this.size=0;" onchange="this.size=1; this.blur()" -->
+                    <select name="movies"  value="movies" id="movies" class="text" >
+                        <!-- <option value="">Swift</option>
+                        <option value="">Maruti</option>
+                        <option value="">Alto</option> -->
+                        <div   >
+                            {% for j in movies_list %}
+                            <option  class="option" value="{{j}}">{{j}}</option>
+                            {% endfor %}
+                            
+                        </div>
+                       
+                    </select>
+                    <button type="submit" class="submit" >Submit</button>
+                </form>
+
+               
+
+               
+                <!-- <p>This is movie recommendetion application based on Machine learning algorithm</p>
+                <p>Here based on user's choice ML model recommend similar taste of Movie</p> -->
+                
+               
+
+         
+
+            <div class="film-vec">
+
+                <img class="imgvec" src="/static/film-vecv.png" alt="" srcset="">
+
+            </div>
+        </div>
+
+
+
+     
+       
+    </div>
+
+
+
+    <script>
+
+
+        const submit=document.querySelector('.submit')
+
+        const loader=document.querySelector('.loader')
+
+        const wraper=document.querySelector('.wraper')
+
+        
+
+        submit.addEventListener('click',()=>{
+
+         wraper.classList.add("deactive")
+         loader.classList.add("active")
+         setTimeout(()=>{
+            wraper.classList.remove("deactive")
+         loader.classList.remove("active")
+
+        },4000)
+
+        })
+
+        
+       
+
+    </script>
+
+    
+</body>
+</html>
